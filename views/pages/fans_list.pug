@@ -1,0 +1,33 @@
+extends ../layouts/main
+
+block content
+  h4.center-align Подписчики пользователя с id - #{ user_id }
+  p.center-align Скачать файл с подписчиками #[a(href=`../../assets/files/fans.txt` download) тут]
+  .row
+    form(method="GET").col.s6.offset-s3
+      .row
+        .input-field.col.s12
+          input(type="text" name="city" id="city")
+          label(for="city") Введите город
+        input(type="hidden" name="user_id" value=user_id)
+      button(type="submit").btn.waves-effect.waves-light.form__btn Найти
+  if fans && fans.length > 0
+    .row
+      each fan in fans  
+        .col.s4
+          .card
+            .card-image
+              if fan.photo_200
+                img(src=fan.photo_200)
+              else 
+                img(src='../../assets/timthumb.png')
+            .card-content.center-align
+              span.card-title #{ fan.first_name } #{ fan.last_name }
+  else 
+    .row
+      .col.s12
+        p.center-align Ничего не найдено
+            
+
+
+  

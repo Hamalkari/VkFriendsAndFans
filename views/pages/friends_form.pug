@@ -1,0 +1,15 @@
+extends ../layouts/main
+
+block content
+  h4.center-align Получить друзей пользователя
+  .row
+    form(method="GET").col.s6.offset-s3.form
+      .row
+        .input-field.col.s12
+          input(id="user_id" type="text" name="user_id")
+          label(for="user_id") ID пользователя
+      button(type="submit").btn.waves-effect.waves-light.form__btn Получить
+  if error
+    .row
+      .col.s12
+        p.center-align.red-text #{error}
