@@ -7,12 +7,13 @@ const { getUserFans } = require('../parser/index');
 
 router.get(BASE_URL, async (ctx) => {
     try {
-      const { user_id,city } = ctx.request.query;
+      const { user_id,city = ''} = ctx.request.query;
       if (user_id) {
         let fans = await getUserFans(user_id,city);
         await ctx.render('fans_list',{
           pageTitle: `Подписчики пользователя ${user_id}`,
           user_id,
+          city,
           fans
         });
       } else {

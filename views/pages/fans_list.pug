@@ -1,8 +1,10 @@
 extends ../layouts/main
+block variables
+  - var fileName = city ? `fans_city-${city}_id-${user_id}.txt` : `fans_id-${user_id}.txt` 
 
 block content
   h4.center-align Подписчики пользователя с id - #{ user_id }
-  p.center-align Скачать файл с подписчиками #[a(href=`../../assets/files/fans.txt` download) тут]
+  p.center-align Скачать файл с подписчиками #[a(href=`../../assets/files/${fileName}` download) тут]
   .row
     form(method="GET").col.s6.offset-s3
       .row

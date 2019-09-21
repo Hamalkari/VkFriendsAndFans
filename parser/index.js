@@ -36,7 +36,8 @@ async function getUserFriends(id,city = '') {
           return 'city' in friend ? friend.city.title == city : false;
         });
       }
-      await writeFile(path.join(__dirname,'..','assets/files',`friends.txt`),JSON.stringify(friends,null,4));
+      const fileName = city ? `friends_city-${city}_id-${id}.txt` : `friends_id-${id}.txt`;
+      await writeFile(path.join(__dirname,'..','assets/files',fileName),JSON.stringify(friends,null,4));
       return friends;
     }
   } catch (error) {
@@ -72,7 +73,8 @@ async function getUserFans(id,city = '') {
         return 'city' in fan ? fan.city.title === city : false;
       });
     }
-    await writeFile(path.join(__dirname,'..','assets/files',`fans.txt`),JSON.stringify(fans,null,4));
+    const fileName = city ? `fans_city-${city}_id-${id}.txt` : `fans_id-${id}.txt`;
+    await writeFile(path.join(__dirname,'..','assets/files',fileName),JSON.stringify(fans,null,4));
     return fans;
   } catch (error) {
     throw error;

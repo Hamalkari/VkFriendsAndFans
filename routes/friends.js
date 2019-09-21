@@ -13,6 +13,7 @@ router.get(BASE_URL,async (ctx) => {
       await ctx.render('friends_list',{
         pageTitle: `Друзья пользователя - ${user_id}`,
         user_id,
+        city,
         friends,
       });
     } else {
